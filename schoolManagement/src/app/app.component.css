@@ -1,0 +1,16 @@
+label{
+    font-weight: bold;
+    color: blueviolet;
+}
+h1{
+    text-align: center;
+    color: chartreuse;
+    border: 2px solid black;
+    background-color: black;
+}
+/* table{
+    color: white;
+} */
+ #back{
+   background-color: #ddddaa;
+ }

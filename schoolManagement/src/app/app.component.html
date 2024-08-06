@@ -1,0 +1,142 @@
+<div>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+    </head>
+
+    <body>
+        <h1 class="py-3 mb-4">School Bus Management System</h1>
+        <div class="container" id="back" >
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                             <form #myForm="ngForm">
+                                <div class="form-group">
+                                    <label for="busno">
+                                        Bus No
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           name="busno" placeholder="Enter Bus No" 
+                                           #busno="ngModel" ngModel
+                                           required
+                                           pattern="[0-9]+"
+                                            />
+                                </div>
+                                <div *ngIf="busno.touched">
+                                  <div *ngIf="busno.errors?.['required']">
+                                    <font color="red"> <b>Bus No is Reqired</b></font>
+                                  </div>
+                                  <div *ngIf="busno.errors?.['pattern']">
+                                    <font color="red"> <b>Bus No should contain only in number</b></font>
+                                  </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="Driver Name">
+                                        Driver Name
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           name="drivername" 
+                                           placeholder="Enter Name of the driver"
+                                           #drivername="ngModel" ngModel
+                                           required
+                                           pattern="[a-zA-Z ]+"
+                                            />
+                                </div>
+                                <div *ngIf="drivername.touched">
+                                   <div *ngIf="drivername.errors?.['required']">
+                                    <font color="red"> <b>Employee Name Reqired</b></font>
+                                  </div>
+                                  <div *ngIf="drivername.errors?.['pattern']">
+                                    <font color="red"> <b>Employee Name should contain only alphabets and spaces</b></font>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="km ">
+                                        Total KM per day
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           name="km" 
+                                           placeholder="Enter KM"
+                                           #km="ngModel" ngModel
+                                           required
+                                           pattern="[0-9]+"
+ 
+                                           />
+                                </div>
+                                <div *ngIf="km.touched">
+                                   <div *ngIf="km.errors?.['required']">
+                                    <font color="red"> <b>KM Reqired</b></font>
+                                  </div>
+                                  <div *ngIf="km.errors?.['pattern']">
+                                    <font color="red"> <b>KM should contain only digits</b></font>
+                                  </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="Reg No">
+                                        Bus Reg No
+                                    </label>
+                                    
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                                       name="register"
+                                        placeholder="enter Regestration No"
+                                         autocomplete="off"
+                                          #register="ngModel"
+                                           ngModel required />
+
+                                     <div *ngIf="register.touched">
+                                       <div *ngIf="register.errors?.['required']" >
+                                        <font color="red"> <b>Regestration No Reqired</b></font>
+                                        
+                                      </div>
+                                     </div>
+                                     <br><br>
+                                                              
+                                <button class="btn btn-success" (click)="insertBus(myForm.value)">
+                                    Save 
+                                </button>
+                            &nbsp;&nbsp;
+                                <button class="btn btn-primary" (click)="updateBus(myForm.value)" >
+                                    Update 
+                                </button>&nbsp;&nbsp;
+                                <button class="btn btn-danger" (click)="deleteBus(myForm.value)" >
+                                    Delete 
+                                </button>&nbsp;&nbsp;
+                                <button class="btn btn-warning" (click)="findBus(myForm.value)">
+                                    Find 
+                                </button>
+                                &nbsp;&nbsp;
+                                <button class="btn btn-info" (click)="findAllBus()">
+                                    Find All
+                                </button>
+                                
+                            </div></form>
+                            
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <h3>{{result}}</h3>
+    
+                
+                <div style="width: 100%;" *ngIf="flag">
+                
+
+                    <table width="80%" align="center" class="table table-borderd">
+                     <tr><th>Bus NO</th><th>Driver Name</th><th>total KM per Day</th><th>Registrer No</th></tr> 
+                      <tr *ngFor="let bus of busArr">
+                          <td> {{bus.id}} </td><td> {{bus.drivername}} </td><td> {{bus.km}} </td> <td>{{bus.register}}</td>
+                      </tr>
+                   </table>
+                   </div>
+                
+                   
+                    </body>
+
+</div>
+
